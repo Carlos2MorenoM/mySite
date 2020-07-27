@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Página de Contacto</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <h2>Detalles de Contacto:</h2>
+  <p>Calle Arzobispo Marcelo Gonzalez. Valladolid, España</p>
+  <p>Código Postal: 47007</p>
+  <p>+34 671 199 985</p>
+  <p>carlosmdevelopment@mail.com</p>
+  <h2>Contáctame:</h2>
+
+  <form action = class="" action="index.html" method="post">
+    <label>
+      <h3>Nombre:</h3>
+    </label>
+    <input type="text" id='subject' name="" value=""><br>
+    <label>
+      <h3>Email:</h3>
+    </label>
+    <input type="email" id='email' name="" value=""><br>
+    <label>Mensaje:</label><br>
+    <textarea name="name" id='text' rows="8" cols="30"></textarea><br>
+    <input type="submit" name="">
+  </form>
+
+  <!-- TODO: CREATE SUCCESS PAGE
+  TODO: CREATE FAILURE PAGE -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $('form').on('submit', (e) => {
+      e.preventDefault();
+
+      const subject = $('#subject').val().trim();
+      const email = $('#email').val().trim();
+      const text = $('#text').val().trim();
+
+      const data = {
+        subject,
+        email,
+        text
+      };
+      $.post('/send', data, function(){
+        console.log("Server received our data");
+      });
+    });;
+
+
+
+
+  </script>
+
+
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+</body>
+
+</html>
