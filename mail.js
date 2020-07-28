@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config();
 
 const domain = process.env.DOMAIN_NAME;
 const api_key = process.env.API_KEY;
+const gmail_user = process.env.GMAIL_USER;
 
 const auth = {
   auth: {
@@ -19,7 +20,7 @@ const sendMail = (email, subject, text, cb) => {
 
   const mailOptions = {
     from: email,
-    to: 'carlosmoreno.development@gmail.com',
+    to: gmail_user,
     subject: subject,
     text: text
   };

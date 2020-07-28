@@ -1,16 +1,18 @@
 const express = require("express");
 const sendMail = require('./mail')
 const nodemailer = require("nodemailer");
+const request = require("request");
 
 const app = express();
 const path = require('path');
+const https = require("https");
 
 app.use(express.static("public"));
 
 
 //Data parsing
 app.use(express.urlencoded({
-  extended: false
+  extended: true
 }));
 app.use(express.json());
 
@@ -29,6 +31,7 @@ app.post('/send', (req, res) => {
     }
 
     console.log('Email sent!!!');
+    // return res.redirect('/sucess')
     return res.json({ message: 'Email sent!!!!!' });
 
   });
@@ -43,6 +46,11 @@ app.get("/", function(req, res){
 app.get("/contacto.html", function(req, res){
   res.sendFile(path.join(__dirname, 'views', '/contacto.html'));
 });
+
+
+
+
+
 
 
 //Port
